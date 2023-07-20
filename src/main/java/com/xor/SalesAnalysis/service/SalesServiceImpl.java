@@ -29,21 +29,7 @@ public class SalesServiceImpl implements SalesService {
         return storeWisePerformance;
     }
 
-    @Override
-    public void test(){
-       List<Object[]> values= salesRepository.getSumOfSalesOfSingleStore();
-       Map<Integer,Double> storeWisePerformance=new HashMap<>();
-//        System.out.println(salesRepository.getSumOfSalesOfAllStores().getClass().getSimpleName());
-       for(Object[] row:values){
-           storeWisePerformance.put((Integer)row[0],((Double)row[1]/salesRepository.getSumOfSalesOfAllStores())*100);
-       }
-         storeWisePerformance.forEach((k,v)->{
-              System.out.println(k+" "+v);
-         });
-//        sumOfWeeklySales.forEach((k,v)->{
-//            System.out.println(k+" "+v);
-//        });
-    }
+
 
     @Override
     public Map<Integer, Double> getMonthlyPerformanceReport(Integer storeId, Integer year) {

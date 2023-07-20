@@ -31,15 +31,11 @@ public class SalesController {
 
     @GetMapping("/get")
     public ResponseEntity<Map<Integer,Double>> getMonthlyPerformanceReport(@RequestParam(value = "storeId", required = true) Integer storeId, @RequestParam(value = "year", required = false) Integer year) {
-        if(storeId==null){
-            throw new NullPointerException("Please provide storeId");
-        }
+        Map<Integer,Double> monthlyPerformance =salesService.getMonthlyPerformanceReport(storeId,year);
         if (year == null) {
             Year current = Year.now(ZoneId.systemDefault());
             year = current.getValue();
         }
-        Map<Integer,Double> monthlyPerformance =salesService.getMonthlyPerformanceReport(storeId,year);
-//        monthlyPerformance=
         if(monthlyPerformance.isEmpty()){
             throw new EmptyResponseHandler("No data found for storeId "+storeId+" and year "+year);
         }
@@ -51,6 +47,4 @@ public class SalesController {
         List<HolidayVsNonHolidayResponseDto> holidayVsNonHolidayAnalysis=salesService.getHolidayVsNonHolidayAnalysis();
         return ResponseEntity.ok(holidayVsNonHolidayAnalysis);
     }
-
-
 }
