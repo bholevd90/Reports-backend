@@ -9,5 +9,6 @@ public class HolidayVsNonHolidayResponseDto {
     int store_id;
     Double holidaySales;
     Double nonHolidaySales;
+    String storeName;
 
 }

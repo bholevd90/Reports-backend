@@ -66,6 +66,7 @@ public class SalesServiceImpl implements SalesService {
             HolidayVsNonHolidayResponseDto response=new HolidayVsNonHolidayResponseDto();
             response.setStore_id((Integer) row[0]);
             response.setHolidaySales((Double) row[2]);
+            response.setStoreName((String) row[1]);
             responseList.add(response);
         }
         for(Object[] row:nonHoliday){
